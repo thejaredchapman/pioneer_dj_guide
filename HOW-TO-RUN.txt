@@ -1,0 +1,167 @@
+================================================================================
+  DDJ-FLX4 MASTER TRAINER - HOW TO RUN THE APP
+================================================================================
+
+QUICK START (3 COMMANDS):
+-------------------------
+
+1. Install dependencies:
+   npm install
+
+2. Start the application:
+   npm start
+
+3. Browser will automatically open to:
+   http://localhost:4200
+
+
+DETAILED INSTRUCTIONS:
+----------------------
+
+STEP 1: Check Prerequisites
+----------------------------
+Make sure you have Node.js installed:
+  node --version   (should show v18 or higher)
+  npm --version    (should show 9 or higher)
+
+If not installed:
+  - Windows: Download from https://nodejs.org/
+  - Ubuntu: sudo apt install nodejs npm
+
+
+STEP 2: Navigate to Project
+----------------------------
+Open terminal/command prompt and go to project folder:
+  cd /path/to/ddj-flx4-trainer-angular
+
+
+STEP 3: Install Dependencies
+-----------------------------
+Run this command (only needed first time or after updates):
+  npm install
+
+This may take 2-5 minutes.
+You'll see progress bars and package installation messages.
+
+
+STEP 4: Start Development Server
+---------------------------------
+Run this command:
+  npm start
+
+You'll see:
+  - "Building..."
+  - "Compiled successfully"
+  - "Angular Live Development Server is listening on localhost:4200"
+
+Your browser will automatically open to http://localhost:4200
+
+
+STEP 5: Use the App!
+--------------------
+The DDJ-FLX4 Master Trainer will load in your browser.
+- Click "Setup Instructions" to connect your controller
+- Click "Start Training" to begin Lesson 1
+- Complete lessons to earn XP and level up!
+
+
+TROUBLESHOOTING:
+----------------
+
+Problem: "npm command not found"
+Solution: Install Node.js from nodejs.org
+
+Problem: "Port 4200 is already in use"
+Solution: Run: ng serve --port 4300
+          Then open: http://localhost:4300
+
+Problem: npm install fails
+Solution:
+  1. Delete node_modules folder
+  2. Delete package-lock.json file
+  3. Run: npm install again
+
+Problem: Browser doesn't auto-open
+Solution: Manually open http://localhost:4200
+
+Problem: White screen / errors in browser
+Solution:
+  1. Stop server (Ctrl+C)
+  2. Clear browser cache
+  3. Run: npm start again
+
+
+OTHER USEFUL COMMANDS:
+----------------------
+
+Build for production:
+  npm run build
+  (Output will be in dist/ folder)
+
+Run on different port:
+  ng serve --port 4300
+
+Stop the server:
+  Press Ctrl+C in terminal
+
+
+WHAT YOU NEED TO USE THE APP:
+------------------------------
+
+Required:
+- Computer (Windows or Ubuntu)
+- Node.js installed
+- Modern web browser (Chrome, Firefox, Edge, Safari)
+- Internet connection (for initial npm install)
+
+Recommended:
+- Pioneer DDJ-FLX4 controller
+- USB cable
+- DJ software (Rekordbox or Mixxx)
+- Headphones
+- Music library
+
+
+FILE LOCATIONS:
+---------------
+
+Main files you might want to edit:
+- Lesson content: src/app/data/lessons.data.ts
+- Styles: src/styles.css and component CSS files
+- Components: src/app/pages/ and src/app/components/
+
+
+DOCUMENTATION FILES:
+--------------------
+
+READ THESE FOR MORE INFO:
+- START-HERE.md - Quick start guide
+- GETTING-STARTED.md - Detailed setup and learning path
+- INSTRUCTIONS.md - Complete usage instructions
+- PROJECT-SUMMARY.md - Technical details and architecture
+- README.md - Project overview
+
+
+SUPPORT:
+--------
+
+If you have issues:
+1. Check GETTING-STARTED.md troubleshooting section
+2. Check INSTRUCTIONS.md for detailed help
+3. Search GitHub issues
+4. Ask in r/Beatmatch on Reddit
+
+
+================================================================================
+
+READY TO START?
+
+1. Open terminal in this folder
+2. Run: npm install
+3. Run: npm start
+4. Wait for browser to open
+5. Start learning to DJ!
+
+Have fun! 🎧
+
+================================================================================

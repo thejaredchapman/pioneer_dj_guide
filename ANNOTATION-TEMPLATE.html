@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDJ-FLX4 Annotation Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        h1 {
+            color: #00ff9d;
+            text-align: center;
+        }
+        .instructions {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .example {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .example h2 {
+            color: #00ff9d;
+            margin-top: 0;
+        }
+        svg {
+            width: 100%;
+            height: auto;
+            background: #000;
+            border-radius: 8px;
+        }
+        .annotation-arrow {
+            stroke: #ff0000;
+            stroke-width: 3;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+        .annotation-label {
+            fill: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .annotation-box {
+            fill: #000000;
+            stroke: #ff0000;
+            stroke-width: 2;
+            opacity: 0.8;
+        }
+        code {
+            background: #000;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #00ff9d;
+        }
+        ul {
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎛️ DDJ-FLX4 Photo Annotation Template</h1>
+
+    <div class="instructions">
+        <h2>📋 Annotation Guidelines</h2>
+        <ul>
+            <li><strong>Arrow Style:</strong> Red (#FF0000), 3-5px width, with arrowheads</li>
+            <li><strong>Text Labels:</strong> White text on black/dark background</li>
+            <li><strong>Font:</strong> Sans-serif, bold, 14-16pt</li>
+            <li><strong>Label Position:</strong> Place at the end of arrows, away from controller</li>
+            <li><strong>Clarity:</strong> Ensure arrows don't overlap; space labels evenly</li>
+            <li><strong>Consistency:</strong> Use the same style across all photos</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h2>Example: Jog Wheels Annotation</h2>
+        <p>This is an example showing how to annotate the jog wheels section. Apply this same style to your actual photos.</p>
+
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- Define arrowhead marker -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#ff0000" />
+                </marker>
+            </defs>
+
+            <!-- Simulated controller background -->
+            <rect x="0" y="0" width="800" height="600" fill="#1a1a1a"/>
+
+            <!-- Simulated left jog wheel -->
+            <circle cx="250" cy="300" r="100" fill="#2a2a2a" stroke="#444" stroke-width="2"/>
+            <circle cx="250" cy="300" r="80" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+            <circle cx="250" cy="300" r="60" fill="#2a2a2a"/>
+
+            <!-- Simulated right jog wheel -->
+            <circle cx="550" cy="300" r="100" fill="#2a2a2a" stroke="#444" stroke-width="2"/>
+            <circle cx="550" cy="300" r="80" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+            <circle cx="550" cy="300" r="60" fill="#2a2a2a"/>
+
+            <!-- Annotation 1: Left jog wheel - top surface -->
+            <line x1="250" y1="300" x2="150" y2="150" class="annotation-arrow"/>
+            <rect x="30" y="120" width="110" height="50" class="annotation-box" rx="5"/>
+            <text x="85" y="135" class="annotation-label" text-anchor="middle">Top Surface</text>
+            <text x="85" y="155" class="annotation-label" text-anchor="middle" font-size="12">(Scratch/Nudge)</text>
+
+            <!-- Annotation 2: Left jog wheel - outer ring -->
+            <line x1="180" y1="350" x2="80" y2="480" class="annotation-arrow"/>
+            <rect x="30" y="465" width="90" height="50" class="annotation-box" rx="5"/>
+            <text x="75" y="485" class="annotation-label" text-anchor="middle">Outer Ring</text>
+            <text x="75" y="505" class="annotation-label" text-anchor="middle" font-size="12">(Scan Track)</text>
+
+            <!-- Annotation 3: Right jog wheel - vinyl mode button -->
+            <line x1="550" y1="200" x2="650" y2="100" class="annotation-arrow"/>
+            <rect x="580" y="70" width="120" height="50" class="annotation-box" rx="5"/>
+            <text x="640" y="90" class="annotation-label" text-anchor="middle">Vinyl Mode</text>
+            <text x="640" y="110" class="annotation-label" text-anchor="middle" font-size="12">Button</text>
+
+            <!-- Annotation 4: Center area label -->
+            <rect x="340" y="50" width="120" height="40" class="annotation-box" rx="5"/>
+            <text x="400" y="75" class="annotation-label" text-anchor="middle" font-size="18">JOG WHEELS</text>
+        </svg>
+    </div>
+
+    <div class="example">
+        <h2>Step-by-Step: How to Add Annotations</h2>
+
+        <h3>Option 1: Using Photopea (Free, Web-based)</h3>
+        <ol>
+            <li>Go to <a href="https://photopea.com" style="color: #00ff9d;">photopea.com</a></li>
+            <li>Open your controller photo (File → Open)</li>
+            <li>Select the Line Tool (U key) or Shape Tool</li>
+            <li>Set stroke to red (#FF0000), width 3-5px</li>
+            <li>Draw arrows pointing to controls</li>
+            <li>Add arrowheads: Select line → Edit → Stroke → Add arrow</li>
+            <li>Select Text Tool (T key)</li>
+            <li>Add text labels with white color, bold font</li>
+            <li>Draw black rectangles behind text for readability</li>
+            <li>Export as JPG (File → Export As → JPG)</li>
+        </ol>
+
+        <h3>Option 2: Using Preview (macOS)</h3>
+        <ol>
+            <li>Open photo in Preview</li>
+            <li>Click the Markup Toolbar icon (toolbox)</li>
+            <li>Select the Arrow tool</li>
+            <li>Draw arrows to controls</li>
+            <li>Change arrow color to red using the color picker</li>
+            <li>Select Text tool, add labels</li>
+            <li>Change text to white and add black border</li>
+            <li>Save the annotated photo</li>
+        </ol>
+
+        <h3>Option 3: Using Figma (Free, Web-based)</h3>
+        <ol>
+            <li>Go to <a href="https://figma.com" style="color: #00ff9d;">figma.com</a> and sign up</li>
+            <li>Create new file, import your photo</li>
+            <li>Use Line tool (L) to draw arrows</li>
+            <li>Add triangle shapes for arrowheads</li>
+            <li>Use Text tool (T) for labels</li>
+            <li>Group labels with background rectangles</li>
+            <li>Export as PNG or JPG (File → Export)</li>
+        </ol>
+    </div>
+
+    <div class="instructions">
+        <h2>🎯 Required Photos & Annotations</h2>
+
+        <h3>1. full-controller.jpg</h3>
+        <p>Annotate: Left Deck, Right Deck, Mixer Section, Browser Section, Performance Pads</p>
+
+        <h3>2. jog-wheels.jpg</h3>
+        <p>Annotate: Top Surface (both), Outer Ring (both), Vinyl Mode Button</p>
+
+        <h3>3. transport-controls.jpg</h3>
+        <p>Annotate: Play/Pause (left), Play/Pause (right), CUE (left), CUE (right), CUE/LOOP CALL buttons</p>
+
+        <h3>4. tempo-controls.jpg</h3>
+        <p>Annotate: Tempo Fader (left), Tempo Fader (right), TEMPO/MASTER button, Direction indicators (↑ Slower, ↓ Faster)</p>
+
+        <h3>5. performance-pads.jpg</h3>
+        <p>Annotate: Pads 1-4 (left), Pads 1-4 (right), HOT CUE button, PAD FX button, BEAT JUMP button, SAMPLER button</p>
+
+        <h3>6. mixer-section.jpg</h3>
+        <p>Annotate: TRIM (CH1, CH2), HI/MID/LOW EQ (CH1, CH2), FILTER, Channel Faders, Crossfader, Master Level, Level Meters</p>
+
+        <h3>7. browser-section.jpg</h3>
+        <p>Annotate: BROWSE encoder, BACK button, LOAD Left (◀), LOAD Right (▶)</p>
+
+        <h3>8. headphone-section.jpg</h3>
+        <p>Annotate: Headphone jack, LEVEL knob, MIX knob, CUE buttons</p>
+
+        <h3>9. fx-section.jpg</h3>
+        <p>Annotate: CFX button, FX SELECT, LEVEL/DEPTH knob, BEAT buttons, ON/OFF button</p>
+    </div>
+
+    <div class="instructions">
+        <h2>✅ Quality Checklist</h2>
+        <ul>
+            <li>☑️ All controls mentioned in lessons are labeled</li>
+            <li>☑️ Arrows clearly point to the exact control</li>
+            <li>☑️ Labels are readable (14-16pt font minimum)</li>
+            <li>☑️ Consistent arrow and text style across all photos</li>
+            <li>☑️ Good lighting - no dark shadows on controller</li>
+            <li>☑️ High resolution (1920x1080 minimum)</li>
+            <li>☑️ Photo taken from directly above (not angled)</li>
+            <li>☑️ File names exactly match the required names</li>
+            <li>☑️ Saved in JPG or PNG format</li>
+        </ul>
+    </div>
+
+    <div class="instructions">
+        <h2>🚀 Testing Your Photos</h2>
+        <ol>
+            <li>Place all 9 annotated photos in <code>src/assets/images/controller/</code></li>
+            <li>Run <code>npm start</code> in terminal</li>
+            <li>Open browser to <code>http://localhost:4200</code></li>
+            <li>Navigate to "Lesson 1 - Controller Layout"</li>
+            <li>Go through each step and verify photos load correctly</li>
+            <li>Check that annotations are clearly visible and helpful</li>
+        </ol>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<div class="home-container">
+  <div class="welcome-section">
+    <h2>Welcome to DDJ-FLX4 Master Trainer! 🎉</h2>
+    <p class="subtitle">Transform from complete beginner to confident DJ through gamified lessons</p>
+
+    <div class="controller-image">
+      <img src="https://www.pioneerdj.com/-/media/pioneerdj/images/products/controller/ddj-flx4/ddj-flx4-top.png"
+           alt="Pioneer DDJ-FLX4 Controller" />
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>12 Progressive Lessons</h3>
+        <p>From complete basics to advanced techniques</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Earn XP & Level Up</h3>
+        <p>Track your progress with achievements</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <h3>Interactive Learning</h3>
+        <p>Hands-on exercises and quizzes</p>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <a routerLink="/setup" class="btn btn-secondary">📋 Setup Instructions</a>
+      <a routerLink="/lesson/1" class="btn btn-primary" *ngIf="isLessonUnlocked(1)">
+        🚀 Start Training
+      </a>
+    </div>
+  </div>
+
+  <div class="lessons-section">
+    <h2>Training Missions</h2>
+
+    <div class="category-section" *ngFor="let category of categories">
+      <h3>
+        <span class="category-icon">{{ getCategoryIcon(category) }}</span>
+        {{ category }}
+      </h3>
+
+      <div class="lessons-grid">
+        <a
+          *ngFor="let lesson of getLessonsByCategory(category)"
+          [routerLink]="isLessonUnlocked(lesson.id) ? ['/lesson', lesson.id] : null"
+          class="lesson-card"
+          [class.locked]="!isLessonUnlocked(lesson.id)"
+          [class.completed]="isLessonCompleted(lesson.id)"
+        >
+          <div class="lesson-number">{{ lesson.id }}</div>
+
+          <div class="lesson-content">
+            <h4>{{ lesson.title }}</h4>
+            <p>{{ lesson.description }}</p>
+
+            <div class="lesson-footer">
+              <span class="lesson-xp">+{{ lesson.xp }} XP</span>
+              <span class="lesson-status" *ngIf="isLessonCompleted(lesson.id)">
+                ✓ Completed
+              </span>
+              <span class="lesson-status locked-text" *ngIf="!isLessonUnlocked(lesson.id)">
+                🔒 Locked
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <h3>💡 Pro Tips</h3>
+      <div class="tips-list">
+        <div class="tip-item">Start with low volumes when testing</div>
+        <div class="tip-item">Use headphones to preview tracks</div>
+        <div class="tip-item">Practice beatmatching by ear</div>
+        <div class="tip-item">Organize your music library</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>📊 Your Progress</h3>
+      <div class="stats-detail">
+        <div class="stat-row">
+          <span>Lessons Completed:</span>
+          <span class="stat-value">{{ progress().completedLessons.length }}/12</span>
+        </div>
+        <div class="stat-row">
+          <span>Total XP:</span>
+          <span class="stat-value">{{ progress().xp }}</span>
+        </div>
+        <div class="stat-row">
+          <span>Current Level:</span>
+          <span class="stat-value">{{ progress().level }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

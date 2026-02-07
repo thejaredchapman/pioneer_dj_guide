@@ -1,0 +1,146 @@
+<div class="lesson-container" *ngIf="lesson()">
+  <div class="lesson-header">
+    <button class="back-btn" (click)="goBack()">← Back to Lessons</button>
+
+    <div class="lesson-info">
+      <h1>{{ lesson()!.title }}</h1>
+      <p class="lesson-description">{{ lesson()!.description }}</p>
+    </div>
+
+    <div class="progress-indicator">
+      <span class="step-counter">
+        Step {{ currentStepIndex() + 1 }} of {{ lesson()!.steps.length }}
+      </span>
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lesson Content -->
+  <div class="lesson-body" *ngIf="!showQuiz() && !showComplete()">
+    <div class="step-content" *ngIf="currentStep">
+      <h2>{{ currentStep.title }}</h2>
+
+      <div class="content-text" [innerHTML]="currentStep.content | markdown"></div>
+
+      <div class="step-tips" *ngIf="currentStep.tips && currentStep.tips.length > 0">
+        <h3>💡 Tips</h3>
+        <ul>
+          <li *ngFor="let tip of currentStep.tips">{{ tip }}</li>
+        </ul>
+      </div>
+
+      <div class="controller-highlight" *ngIf="currentStep.highlightParts">
+        <p class="highlight-note">
+          🎛️ Focus on these controller parts:
+        </p>
+
+        <!-- Controller Photo with Annotations -->
+        <div class="controller-image-container" *ngIf="getControllerImage(currentStep.highlightParts) as imagePath">
+          <img
+            [src]="imagePath"
+            [alt]="'DDJ-FLX4 Controller - ' + currentStep.title"
+            class="controller-photo"
+            (error)="onImageError($event)"
+          />
+          <p class="image-caption">
+            Annotated photo showing highlighted parts on your DDJ-FLX4
+          </p>
+        </div>
+
+        <!-- Fallback: List of parts if no image -->
+        <div class="highlight-tags">
+          <span class="highlight-tag" *ngFor="let part of currentStep.highlightParts">
+            {{ formatHighlightPart(part) }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-navigation">
+      <button
+        class="nav-btn"
+        (click)="previousStep()"
+        [disabled]="currentStepIndex() === 0"
+      >
+        ← Previous
+      </button>
+
+      <button
+        class="nav-btn primary"
+        (click)="nextStep()"
+      >
+        {{ currentStepIndex() === lesson()!.steps.length - 1 ? 'Complete' : 'Next' }} →
+      </button>
+    </div>
+  </div>
+
+  <!-- Quiz Section -->
+  <div class="quiz-section" *ngIf="showQuiz() && !showComplete()">
+    <h2>🎯 Knowledge Check</h2>
+    <p>Test your understanding of this lesson!</p>
+
+    <div class="quiz-questions" *ngIf="lesson()!.quiz">
+      <div class="quiz-question" *ngFor="let question of lesson()!.quiz; let i = index">
+        <h3>Question {{ i + 1 }}</h3>
+        <p class="question-text">{{ question.question }}</p>
+
+        <div class="quiz-options">
+          <button
+            *ngFor="let option of question.options; let optIndex = index"
+            class="quiz-option"
+            [class.selected]="selectedAnswer() === optIndex"
+            (click)="selectAnswer(optIndex)"
+          >
+            {{ option }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <button
+      class="submit-btn"
+      (click)="submitQuiz()"
+      [disabled]="selectedAnswer() === null"
+    >
+      Submit Answers
+    </button>
+  </div>
+
+  <!-- Completion Screen -->
+  <div class="completion-section" *ngIf="showComplete()">
+    <div class="completion-animation">
+      <div class="trophy">🏆</div>
+      <h2>Lesson Complete!</h2>
+      <p class="congrats">Congratulations! You've mastered {{ lesson()!.title }}</p>
+    </div>
+
+    <div class="rewards">
+      <div class="reward-card">
+        <div class="reward-icon">⭐</div>
+        <div class="reward-info">
+          <span class="reward-label">XP Earned</span>
+          <span class="reward-value">+{{ lesson()!.xp }} XP</span>
+        </div>
+      </div>
+
+      <div class="reward-card" *ngIf="lesson()!.quiz">
+        <div class="reward-icon">📊</div>
+        <div class="reward-info">
+          <span class="reward-label">Quiz Score</span>
+          <span class="reward-value">{{ quizScore() }}%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="completion-actions">
+      <button class="action-btn secondary" (click)="reviewLesson()">
+        📖 Review Lesson
+      </button>
+      <button class="action-btn primary" (click)="continueToNext()">
+        Continue →
+      </button>
+    </div>
+  </div>
+</div>

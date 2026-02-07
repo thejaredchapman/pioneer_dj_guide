@@ -1,0 +1,270 @@
+<div class="setup-container">
+  <div class="setup-header">
+    <a routerLink="/" class="back-link">← Back to Home</a>
+    <h1>Setup Instructions</h1>
+    <p class="subtitle">Get your DDJ-FLX4 connected and ready to mix</p>
+  </div>
+
+  <div class="tabs">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab() === 'windows'"
+      (click)="selectTab('windows')"
+    >
+      Windows + Rekordbox
+    </button>
+    <button
+      class="tab-btn"
+      [class.active]="activeTab() === 'ubuntu'"
+      (click)="selectTab('ubuntu')"
+    >
+      Ubuntu Setup
+    </button>
+  </div>
+
+  <div class="tab-content" *ngIf="activeTab() === 'windows'">
+    <h2>Windows + Rekordbox Setup</h2>
+
+    <div class="setup-step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Install Rekordbox</h3>
+        <ul>
+          <li>Download from <a href="https://rekordbox.com/" target="_blank" rel="noopener">rekordbox.com</a></li>
+          <li>Run the installer and follow the prompts</li>
+          <li>Create a free Pioneer DJ account (required)</li>
+          <li>Launch Rekordbox after installation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Connect DDJ-FLX4</h3>
+        <ul>
+          <li>Connect the USB cable from your controller to your PC</li>
+          <li>Power on the DDJ-FLX4 using the power switch on the back</li>
+          <li>Windows will automatically install drivers (wait for this to complete)</li>
+          <li>You may see a notification that the device is ready to use</li>
+        </ul>
+        <div class="pro-tip">
+          💡 <strong>Tip:</strong> Use the USB port on the back of your PC for best performance
+        </div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Configure Rekordbox Audio Settings</h3>
+        <ol>
+          <li>Open Rekordbox</li>
+          <li>Click <strong>Preferences</strong> (gear icon) in top right</li>
+          <li>Navigate to <strong>Audio</strong> tab</li>
+          <li>Under Audio Device, select <strong>"DDJ-FLX4 ASIO"</strong></li>
+          <li>Confirm other settings:
+            <ul>
+              <li>Sample Rate: 44100 Hz</li>
+              <li>Buffer Size: 256 samples (adjust if you hear crackling)</li>
+            </ul>
+          </li>
+          <li>Click <strong>Apply</strong></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>Import Your Music</h3>
+        <ol>
+          <li>Click <strong>File</strong> → <strong>Import</strong> → <strong>Import Folder</strong></li>
+          <li>Navigate to your music folder and select it</li>
+          <li>Wait for Rekordbox to analyze your tracks (this adds BPM, key, waveform data)</li>
+          <li>Organize tracks into playlists (optional but recommended)</li>
+        </ol>
+        <div class="pro-tip">
+          💡 <strong>Tip:</strong> Create playlists by genre or BPM range for easier mixing
+        </div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h3>Test Your Setup</h3>
+        <ol>
+          <li>Drag a track from your library to <strong>Deck A</strong> (left deck)</li>
+          <li>Press the <strong>PLAY/PAUSE</strong> button on the left deck</li>
+          <li>Turn up the <strong>TRIM</strong> knob (top of channel)</li>
+          <li>Push up the <strong>Channel Fader</strong></li>
+          <li>Adjust <strong>Master Level</strong> to comfortable volume</li>
+          <li>You should hear audio! 🎉</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="troubleshooting">
+      <h3>🔧 Troubleshooting Windows</h3>
+      <div class="trouble-item">
+        <strong>Problem:</strong> No sound from controller<br>
+        <strong>Solution:</strong>
+        <ul>
+          <li>Check that "DDJ-FLX4 ASIO" is selected in Rekordbox audio settings</li>
+          <li>Verify TRIM and channel faders are turned up</li>
+          <li>Try a different USB port</li>
+          <li>Restart Rekordbox and reconnect controller</li>
+        </ul>
+      </div>
+      <div class="trouble-item">
+        <strong>Problem:</strong> Crackling or stuttering audio<br>
+        <strong>Solution:</strong>
+        <ul>
+          <li>Increase buffer size in audio settings (try 512 or 1024)</li>
+          <li>Close other audio applications</li>
+          <li>Check CPU usage in Task Manager</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" *ngIf="activeTab() === 'ubuntu'">
+    <h2>Ubuntu Setup</h2>
+
+    <div class="setup-step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Install Mixxx (Open Source DJ Software)</h3>
+        <p>Mixxx is a free, open-source DJ application that works great with the DDJ-FLX4 on Linux.</p>
+        <div class="code-block">
+          <code>sudo add-apt-repository ppa:mixxx/mixxx<br>
+sudo apt update<br>
+sudo apt install mixxx</code>
+        </div>
+        <p>Wait for installation to complete, then launch Mixxx from your applications menu.</p>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Connect DDJ-FLX4</h3>
+        <ul>
+          <li>Connect the USB cable from controller to your PC</li>
+          <li>Power on the DDJ-FLX4</li>
+          <li>Ubuntu should recognize it automatically as an audio device</li>
+          <li>Check recognition with: <code>lsusb | grep Pioneer</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Configure Mixxx Sound Hardware</h3>
+        <ol>
+          <li>Open Mixxx</li>
+          <li>Go to <strong>Options</strong> → <strong>Preferences</strong></li>
+          <li>Click <strong>Sound Hardware</strong></li>
+          <li>Set <strong>Sample Rate</strong> to <strong>48000 Hz</strong></li>
+          <li>For <strong>Master</strong> output, select device containing "DDJ-FLX4"</li>
+          <li>For <strong>Headphones</strong> output, select same "DDJ-FLX4" device</li>
+          <li>For <strong>Deck 1</strong>, select appropriate channel</li>
+          <li>For <strong>Deck 2</strong>, select appropriate channel</li>
+          <li>Click <strong>Apply</strong></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>Configure Controller Mapping</h3>
+        <ol>
+          <li>In Mixxx Preferences, go to <strong>Controllers</strong></li>
+          <li>Look for "Pioneer DDJ-FLX4" in the device list</li>
+          <li>Check the <strong>Enable</strong> checkbox</li>
+          <li>If not listed, click <strong>Load Mapping</strong> and search for DDJ-FLX4</li>
+          <li>Click <strong>OK</strong></li>
+        </ol>
+        <div class="pro-tip">
+          💡 <strong>Tip:</strong> If mapping isn't available, check the Mixxx forums or download it from the Mixxx website
+        </div>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h3>Import Your Music</h3>
+        <ol>
+          <li>In Mixxx, click <strong>Library</strong> → <strong>Add Music Directory</strong></li>
+          <li>Select your music folder</li>
+          <li>Mixxx will automatically analyze tracks for BPM and key</li>
+          <li>Create playlists using the right-click menu</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-number">6</div>
+      <div class="step-content">
+        <h3>Test Your Setup</h3>
+        <ol>
+          <li>Drag a track to Deck 1</li>
+          <li>Press PLAY on the controller</li>
+          <li>Adjust TRIM and channel fader</li>
+          <li>You should hear audio!</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="alternative-section">
+      <h3>Alternative: Rekordbox with Wine (Advanced)</h3>
+      <p>You can attempt to run Rekordbox on Ubuntu using Wine, though it may have limitations:</p>
+      <div class="code-block">
+        <code>sudo dpkg --add-architecture i386<br>
+sudo apt update<br>
+sudo apt install wine64 wine32<br>
+wget https://dl.winehq.org/wine-builds/winehq.key<br>
+sudo apt-key add winehq.key<br>
+sudo apt install --install-recommends winehq-stable</code>
+      </div>
+      <p>Then download the Rekordbox Windows installer and run:</p>
+      <div class="code-block">
+        <code>wine rekordbox_installer.exe</code>
+      </div>
+      <div class="warning">
+        ⚠️ <strong>Warning:</strong> USB audio support in Wine can be limited. Mixxx is recommended for Linux users.
+      </div>
+    </div>
+
+    <div class="troubleshooting">
+      <h3>🔧 Troubleshooting Ubuntu</h3>
+      <div class="trouble-item">
+        <strong>Problem:</strong> Controller not detected<br>
+        <strong>Solution:</strong>
+        <ul>
+          <li>Check USB connection</li>
+          <li>Run: <code>lsusb</code> to see if device is listed</li>
+          <li>Try: <code>sudo usermod -a -G audio $USER</code> then reboot</li>
+        </ul>
+      </div>
+      <div class="trouble-item">
+        <strong>Problem:</strong> No sound output<br>
+        <strong>Solution:</strong>
+        <ul>
+          <li>Check PulseAudio mixer: <code>pavucontrol</code></li>
+          <li>Verify Mixxx sound settings</li>
+          <li>Try different sample rates (44100 Hz or 48000 Hz)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="setup-footer">
+    <p>Once your setup is complete, head back to start your first lesson!</p>
+    <a routerLink="/lesson/1" class="start-btn">🚀 Start Lesson 1</a>
+  </div>
+</div>
